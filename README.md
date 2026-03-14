@@ -1,4 +1,4 @@
-<img src="https://github.com/RQM-Technologies-dev/qsp-fft/actions/workflows/ci.yml/badge.svg">
+<img src="https://github.com/RQM-Technologies-dev/qsp-fft/actions/workflows/ci.yml/badge.svg" alt="CI Status">
 
 # qsp-fft
 
