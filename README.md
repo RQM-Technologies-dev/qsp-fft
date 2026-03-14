@@ -1,3 +1,5 @@
+<img src="https://github.com/RQM-Technologies-dev/qsp-fft/actions/workflows/ci.yml/badge.svg">
+
 # qsp-fft
 
 **Spectral-transform primitives library for the RQM Technologies QSP ecosystem.**
