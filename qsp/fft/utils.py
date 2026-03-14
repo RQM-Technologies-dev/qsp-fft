@@ -1,4 +1,4 @@
-"""qsp_fft.utils — shared low-level helpers for the spectral layer.
+"""qsp.fft.utils — shared low-level helpers for the spectral layer.
 
 Only utilities that clearly belong in the spectral domain live here.
 Quaternion helpers belong in qsp-core.
@@ -31,7 +31,7 @@ def next_power_of_two(n: int) -> int:
 
     Examples
     --------
-    >>> from qsp_fft.utils import next_power_of_two
+    >>> from qsp.fft.utils import next_power_of_two
     >>> next_power_of_two(1)
     1
     >>> next_power_of_two(5)
@@ -63,7 +63,7 @@ def normalise_signal(signal: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp_fft.utils import normalise_signal
+    >>> from qsp.fft.utils import normalise_signal
     >>> normalise_signal(np.array([0.0, 2.0, -4.0, 2.0]))
     array([ 0.  ,  0.5 , -1.  ,  0.5 ])
     """

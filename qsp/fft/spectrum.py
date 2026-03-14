@@ -1,4 +1,4 @@
-"""qsp_fft.spectrum — core spectral-transform utilities.
+"""qsp.fft.spectrum — core spectral-transform utilities.
 
 All functions operate on real-valued 1-D NumPy arrays and return
 one-sided (non-negative frequency) results unless otherwise stated.
@@ -28,7 +28,7 @@ def magnitude_spectrum(signal: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp_fft import magnitude_spectrum
+    >>> from qsp.fft import magnitude_spectrum
     >>> mag = magnitude_spectrum(np.array([1.0, 0.0, -1.0, 0.0]))
     >>> mag.shape
     (3,)
@@ -57,7 +57,7 @@ def power_spectrum(signal: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp_fft import power_spectrum
+    >>> from qsp.fft import power_spectrum
     >>> pwr = power_spectrum(np.ones(8))
     >>> pwr.shape
     (5,)
@@ -83,7 +83,7 @@ def frequency_bins(n: int, sample_rate: float = 1.0) -> np.ndarray:
 
     Examples
     --------
-    >>> from qsp_fft import frequency_bins
+    >>> from qsp.fft import frequency_bins
     >>> frequency_bins(4, sample_rate=4.0)
     array([0., 1., 2.])
     """

@@ -84,7 +84,7 @@ These rules must be followed by all contributors and AI agents:
 2. **Do not add stateful objects** (classes that hold signal history, filter
    state, etc.).  All public functions must be stateless transforms.
 3. **Preserve the public API contract.**  Public function signatures in
-   `qsp_fft/__init__.py` must not be changed in a breaking way without a
+   `qsp/fft/__init__.py` must not be changed in a breaking way without a
    version bump and corresponding test updates.
 4. **Spectral conventions must remain stable** unless the change is
    intentional, versioned, and documented.  The one-sided FFT convention,
@@ -115,12 +115,13 @@ qsp-fft
 ├── AGENTS.md           ← this file
 ├── README.md
 ├── pyproject.toml
-├── qsp_fft/
-│   ├── __init__.py     ← public API
-│   ├── spectrum.py     ← magnitude_spectrum, power_spectrum, frequency_bins
-│   ├── windows.py      ← rectangular_window, hann_window, hamming_window
-│   ├── analysis.py     ← dominant_frequency_*, spectral_energy
-│   └── utils.py        ← shared low-level helpers
+├── qsp/
+│   └── fft/            ← namespace package: import as `from qsp import fft` / `import qsp.fft`
+│       ├── __init__.py ← public API
+│       ├── spectrum.py ← magnitude_spectrum, power_spectrum, frequency_bins
+│       ├── windows.py  ← rectangular_window, hann_window, hamming_window
+│       ├── analysis.py ← dominant_frequency_*, spectral_energy
+│       └── utils.py    ← shared low-level helpers
 ├── tests/
 │   ├── test_spectrum.py
 │   ├── test_windows.py

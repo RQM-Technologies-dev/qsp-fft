@@ -145,6 +145,27 @@ pip install -e ".[dev]"
 
 ---
 
+## Quick start
+
+```python
+import numpy as np
+from qsp.fft import magnitude_spectrum, frequency_bins, hann_window
+
+# Build a simple sinusoidal signal
+sample_rate = 1000        # Hz
+n = 512
+t = np.arange(n) / sample_rate
+signal = np.sin(2 * np.pi * 50 * t)  # 50 Hz tone
+
+# Apply a Hann window and compute the spectrum
+window = hann_window(n)
+mag = magnitude_spectrum(signal * window)
+freqs = frequency_bins(n, sample_rate)
+
+peak_idx = int(np.argmax(mag))
+print(f"Peak frequency: {freqs[peak_idx]:.1f} Hz")  # → 50.0 Hz
+```
+
 ## Relationship to qsp-filter and qsp-modulation
 
 These three repositories are **complementary and often used together**, but
@@ -219,29 +240,6 @@ Additions that do **not** belong here (they belong in downstream or sibling repo
 
 ---
 
-## Quick start
-
-```python
-import numpy as np
-from qsp_fft import magnitude_spectrum, frequency_bins, hann_window
-
-# Build a simple sinusoidal signal
-sample_rate = 1000        # Hz
-n = 512
-t = np.arange(n) / sample_rate
-signal = np.sin(2 * np.pi * 50 * t)  # 50 Hz tone
-
-# Apply a Hann window and compute the spectrum
-window = hann_window(n)
-mag = magnitude_spectrum(signal * window)
-freqs = frequency_bins(n, sample_rate)
-
-peak_idx = int(np.argmax(mag))
-print(f"Peak frequency: {freqs[peak_idx]:.1f} Hz")  # → 50.0 Hz
-```
-
----
-
 ## Running tests
 
 ```bash
@@ -266,12 +264,13 @@ qsp-fft
 ├── AGENTS.md
 ├── README.md
 ├── pyproject.toml
-├── qsp_fft/
-│   ├── __init__.py
-│   ├── spectrum.py
-│   ├── windows.py
-│   ├── analysis.py
-│   └── utils.py
+├── qsp/
+│   └── fft/
+│       ├── __init__.py
+│       ├── spectrum.py
+│       ├── windows.py
+│       ├── analysis.py
+│       └── utils.py
 ├── tests/
 │   ├── test_spectrum.py
 │   ├── test_windows.py

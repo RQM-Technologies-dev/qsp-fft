@@ -22,7 +22,8 @@ dev = [
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["qsp_fft*"]
+namespaces = true
+include = ["qsp*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

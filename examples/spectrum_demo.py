@@ -6,7 +6,7 @@ Run:
 
 import numpy as np
 
-from qsp_fft import (
+from qsp.fft import (
     dominant_frequency_value,
     frequency_bins,
     hann_window,

@@ -1,11 +1,11 @@
-"""Tests for qsp_fft.windows."""
+"""Tests for qsp.fft.windows."""
 
 import math
 
 import numpy as np
 import pytest
 
-from qsp_fft.windows import hamming_window, hann_window, rectangular_window
+from qsp.fft.windows import hamming_window, hann_window, rectangular_window
 
 
 # ---------------------------------------------------------------------------
