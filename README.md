@@ -290,6 +290,12 @@ qsp-fft
 
 ---
 
+## Publishing
+
+Releases are automatically published to PyPI using GitHub Actions and PyPI Trusted Publishing.
+
+---
+
 ## License
 
 See [LICENSE](LICENSE).
