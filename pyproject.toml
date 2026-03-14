@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "qsp-fft"
-version = "0.1.1"
+version = "0.1.2"
 description = "Spectral-transform library built on qsp-core for the RQM Technologies ecosystem"
 readme = "README.md"
 license = { file = "LICENSE" }
