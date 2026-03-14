@@ -1,4 +1,4 @@
-"""qsp_fft.windows — reusable window functions for spectral analysis.
+"""qsp.fft.windows — reusable window functions for spectral analysis.
 
 Each function returns a 1-D NumPy array of the requested length.
 """
@@ -33,7 +33,7 @@ def rectangular_window(n: int) -> np.ndarray:
 
     Examples
     --------
-    >>> from qsp_fft import rectangular_window
+    >>> from qsp.fft import rectangular_window
     >>> rectangular_window(4)
     array([1., 1., 1., 1.])
     """
@@ -60,7 +60,7 @@ def hann_window(n: int) -> np.ndarray:
 
     Examples
     --------
-    >>> from qsp_fft import hann_window
+    >>> from qsp.fft import hann_window
     >>> w = hann_window(5)
     >>> round(float(w[0]), 6), round(float(w[2]), 6)
     (0.0, 1.0)
@@ -91,7 +91,7 @@ def hamming_window(n: int) -> np.ndarray:
 
     Examples
     --------
-    >>> from qsp_fft import hamming_window
+    >>> from qsp.fft import hamming_window
     >>> w = hamming_window(5)
     >>> round(float(w[0]), 6)
     0.08
