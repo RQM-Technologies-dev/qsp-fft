@@ -1,4 +1,4 @@
-"""qsp.fft — v1 spectral engine for the RQM Technologies QSP ecosystem.
+"""qsp_fft — v1 spectral engine for the RQM Technologies QSP ecosystem.
 
 This package provides both the classical (real-signal) spectral helpers
 that have always lived here and the new **Quaternionic FFT** stack
@@ -37,26 +37,26 @@ utils.py
 """
 
 # v1 Quaternionic FFT API
-from qsp.fft.axis import canonical_axes, is_unit_axis, normalize_axis
-from qsp.fft.qdft import iqdft, qdft
-from qsp.fft.qfft import iqfft, qfft
-from qsp.fft.spectrum import (
+from .axis import canonical_axes, is_unit_axis, normalize_axis
+from .qdft import iqdft, qdft
+from .qfft import iqfft, qfft
+from .spectrum import (
     dominant_bins,
     spectrum_energy,
     spectrum_magnitude,
     total_energy,
 )
-from qsp.fft.validation import check_parseval, compare_qdft_qfft, reconstruction_error
+from .validation import check_parseval, compare_qdft_qfft, reconstruction_error
 
 # Classical (real-signal) API — backward-compatible
-from qsp.fft.spectrum import frequency_bins, magnitude_spectrum, power_spectrum
-from qsp.fft.windows import hamming_window, hann_window, rectangular_window
-from qsp.fft.analysis import (
+from .spectrum import frequency_bins, magnitude_spectrum, power_spectrum
+from .windows import hamming_window, hann_window, rectangular_window
+from .analysis import (
     dominant_frequency_index,
     dominant_frequency_value,
     spectral_energy,
 )
-from qsp.fft.utils import next_power_of_two, normalise_signal
+from .utils import next_power_of_two, normalise_signal
 
 __all__ = [
     # v1 quaternionic FFT — axis

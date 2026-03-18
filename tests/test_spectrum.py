@@ -1,9 +1,9 @@
-"""Tests for qsp.fft.spectrum."""
+"""Tests for qsp_fft.spectrum."""
 
 import numpy as np
 import pytest
 
-from qsp.fft.spectrum import frequency_bins, magnitude_spectrum, power_spectrum
+from qsp_fft.spectrum import frequency_bins, magnitude_spectrum, power_spectrum
 
 
 # ---------------------------------------------------------------------------

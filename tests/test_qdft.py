@@ -1,9 +1,9 @@
-"""Tests for qsp.fft.qdft — direct O(N²) QDFT reference implementation."""
+"""Tests for qsp_fft.qdft — direct O(N²) QDFT reference implementation."""
 
 import numpy as np
 import pytest
 
-from qsp.fft.qdft import iqdft, qdft
+from qsp_fft.qdft import iqdft, qdft
 
 
 class TestQdftOutputShape:

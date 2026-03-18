@@ -1,4 +1,4 @@
-"""qsp.fft.quaternion — quaternion helpers for the QDFT/QFFT stack.
+"""qsp_fft.quaternion — quaternion helpers for the QDFT/QFFT stack.
 
 All quaternions are represented as ``(w, x, y, z)`` float arrays in
 ``(N, 4)`` shape, corresponding to ``q = w + x·i + y·j + z·k``.
@@ -46,7 +46,7 @@ def as_quaternion_array(x: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.quaternion import as_quaternion_array
+    >>> from qsp_fft.quaternion import as_quaternion_array
     >>> as_quaternion_array(np.array([1.0, 0.0, 0.0, 0.0])).shape
     (1, 4)
     >>> as_quaternion_array(np.zeros((5, 4))).shape
@@ -83,7 +83,7 @@ def quaternion_norm(q: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.quaternion import quaternion_norm
+    >>> from qsp_fft.quaternion import quaternion_norm
     >>> quaternion_norm(np.array([[1.0, 0.0, 0.0, 0.0]]))
     array([1.])
     >>> quaternion_norm(np.array([[0.0, 3.0, 4.0, 0.0]]))
@@ -112,7 +112,7 @@ def quaternion_conjugate(q: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.quaternion import quaternion_conjugate
+    >>> from qsp_fft.quaternion import quaternion_conjugate
     >>> quaternion_conjugate(np.array([[1.0, 2.0, 3.0, 4.0]]))
     array([[ 1., -2., -3., -4.]])
     """
@@ -144,7 +144,7 @@ def quaternion_multiply(q1: np.ndarray, q2: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.quaternion import quaternion_multiply
+    >>> from qsp_fft.quaternion import quaternion_multiply
     >>> i = np.array([[0., 1., 0., 0.]])
     >>> j = np.array([[0., 0., 1., 0.]])
     >>> quaternion_multiply(i, j)  # i*j = k
@@ -184,7 +184,7 @@ def quaternion_exp_pure(
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.quaternion import quaternion_exp_pure
+    >>> from qsp_fft.quaternion import quaternion_exp_pure
     >>> import math
     >>> q = quaternion_exp_pure(np.array([1.,0.,0.]), math.pi / 2)
     >>> q.round(10)

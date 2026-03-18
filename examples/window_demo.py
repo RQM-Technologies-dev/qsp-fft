@@ -6,8 +6,8 @@ Run:
 
 import numpy as np
 
-from qsp.fft import hamming_window, hann_window, rectangular_window
-from qsp.fft.utils import normalise_signal
+from qsp_fft import hamming_window, hann_window, rectangular_window
+from qsp_fft.utils import normalise_signal
 
 
 def _stats(name: str, w: np.ndarray) -> None:
@@ -33,7 +33,7 @@ def main() -> None:
     # -----------------------------------------------------------------------
     # Apply each window to a noisy sinusoid and compare spectral leakage
     # -----------------------------------------------------------------------
-    from qsp.fft import magnitude_spectrum, frequency_bins
+    from qsp_fft import magnitude_spectrum, frequency_bins
 
     sample_rate = float(n)
     t = np.arange(n) / sample_rate

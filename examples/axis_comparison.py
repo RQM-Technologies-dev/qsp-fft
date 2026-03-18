@@ -10,7 +10,7 @@ Usage::
 
 import numpy as np
 
-from qsp.fft import canonical_axes, qfft, spectrum_magnitude
+from qsp_fft import canonical_axes, qfft, spectrum_magnitude
 
 
 def main() -> None:

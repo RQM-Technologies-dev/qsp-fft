@@ -84,7 +84,7 @@ These rules must be followed by all contributors and AI agents:
 2. **Do not add stateful objects** (classes that hold signal history, filter
    state, etc.).  All public functions must be stateless transforms.
 3. **Preserve the public API contract.**  Public function signatures in
-   `qsp/fft/__init__.py` must not be changed in a breaking way without a
+   `src/qsp_fft/__init__.py` must not be changed in a breaking way without a
    version bump and corresponding test updates.
 4. **Spectral conventions must remain stable** unless the change is
    intentional, versioned, and documented.  The one-sided FFT convention,
@@ -115,19 +115,37 @@ qsp-fft
 ├── AGENTS.md           ← this file
 ├── README.md
 ├── pyproject.toml
-├── qsp/
-│   └── fft/            ← namespace package: import as `from qsp import fft` / `import qsp.fft`
+├── src/
+│   └── qsp_fft/        ← flat package: import as `from qsp_fft import ...`
 │       ├── __init__.py ← public API
-│       ├── spectrum.py ← magnitude_spectrum, power_spectrum, frequency_bins
+│       ├── py.typed    ← PEP 561 marker
+│       ├── axis.py     ← normalize_axis, is_unit_axis, canonical_axes
+│       ├── quaternion.py ← quaternion helpers (w,x,y,z convention)
+│       ├── qdft.py     ← direct O(N²) QDFT reference
+│       ├── qfft.py     ← fast O(N log N) QFFT via slice decomposition
+│       ├── spectrum.py ← magnitude_spectrum, power_spectrum, frequency_bins,
+│       │                 spectrum_magnitude, spectrum_energy, total_energy, dominant_bins
+│       ├── validation.py ← reconstruction_error, check_parseval, compare_qdft_qfft
 │       ├── windows.py  ← rectangular_window, hann_window, hamming_window
 │       ├── analysis.py ← dominant_frequency_*, spectral_energy
 │       └── utils.py    ← shared low-level helpers
 ├── tests/
+│   ├── test_api.py
+│   ├── test_axis.py
+│   ├── test_quaternion.py
+│   ├── test_qdft.py
+│   ├── test_qfft.py
+│   ├── test_inverse.py
+│   ├── test_parseval.py
 │   ├── test_spectrum.py
 │   ├── test_windows.py
 │   ├── test_analysis.py
 │   └── test_package_api.py
 ├── examples/
+│   ├── basic_qfft.py
+│   ├── compare_qdft_vs_qfft.py
+│   ├── axis_comparison.py
+│   ├── spectral_peaks.py
 │   ├── spectrum_demo.py
 │   └── window_demo.py
 └── docs/

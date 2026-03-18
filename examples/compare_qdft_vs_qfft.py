@@ -14,7 +14,7 @@ import time
 
 import numpy as np
 
-from qsp.fft import qdft, qfft
+from qsp_fft import qdft, qfft
 
 
 def main() -> None:

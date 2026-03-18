@@ -1,4 +1,4 @@
-"""qsp.fft.qdft — direct O(N²) reference implementation of the QDFT.
+"""qsp_fft.qdft — direct O(N²) reference implementation of the QDFT.
 
 Implements the right-sided fixed-axis Quaternionic Discrete Fourier
 Transform (QDFT) exactly as defined in the v1 specification:
@@ -14,15 +14,15 @@ where ``exp(u·θ) = cos(θ) + u·sin(θ)`` and the exponential sits on the
 
 These functions are intentionally the brute-force O(N²) reference
 implementations, designed for correctness verification rather than
-performance.  Use :mod:`qsp.fft.qfft` for production use.
+performance.  Use :mod:`qsp_fft.qfft` for production use.
 """
 
 from __future__ import annotations
 
 import numpy as np
 
-from qsp.fft.axis import normalize_axis
-from qsp.fft.quaternion import as_quaternion_array, quaternion_exp_pure, quaternion_multiply
+from .axis import normalize_axis
+from .quaternion import as_quaternion_array, quaternion_exp_pure, quaternion_multiply
 
 __all__ = ["qdft", "iqdft"]
 
@@ -56,7 +56,7 @@ def qdft(signal: np.ndarray, axis: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.qdft import qdft
+    >>> from qsp_fft.qdft import qdft
     >>> q = np.zeros((4, 4)); q[0, 0] = 1.0  # scalar impulse at n=0
     >>> Q = qdft(q, np.array([1., 0., 0.]))
     >>> np.allclose(Q, np.tile([1., 0., 0., 0.], (4, 1)))
@@ -103,7 +103,7 @@ def iqdft(spectrum: np.ndarray, axis: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.qdft import qdft, iqdft
+    >>> from qsp_fft.qdft import qdft, iqdft
     >>> rng = np.random.default_rng(0)
     >>> q = rng.standard_normal((8, 4))
     >>> axis = np.array([0., 1., 0.])

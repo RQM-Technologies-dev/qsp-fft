@@ -1,4 +1,4 @@
-"""Smoke tests for the top-level public API of qsp.fft (v1 + backward-compat)."""
+"""Smoke tests for the top-level public API of qsp_fft (v1 + backward-compat)."""
 
 import importlib
 
@@ -35,14 +35,14 @@ class TestV1ApiImports:
     ]
 
     def test_all_v1_names_in_package(self):
-        import qsp.fft
+        import qsp_fft
         for name in self.v1_names:
-            assert hasattr(qsp.fft, name), f"qsp.fft.{name} not found in package"
+            assert hasattr(qsp_fft, name), f"qsp_fft.{name} not found in package"
 
     def test_all_v1_names_in_dunder_all(self):
-        import qsp.fft
+        import qsp_fft
         for name in self.v1_names:
-            assert name in qsp.fft.__all__, f"{name!r} missing from __all__"
+            assert name in qsp_fft.__all__, f"{name!r} missing from __all__"
 
 
 class TestBackwardCompatImports:
@@ -63,9 +63,9 @@ class TestBackwardCompatImports:
     ]
 
     def test_legacy_names_still_present(self):
-        import qsp.fft
+        import qsp_fft
         for name in self.legacy_names:
-            assert hasattr(qsp.fft, name), f"qsp.fft.{name} missing (backward compat)"
+            assert hasattr(qsp_fft, name), f"qsp_fft.{name} missing (backward compat)"
 
 
 # ---------------------------------------------------------------------------
@@ -73,15 +73,15 @@ class TestBackwardCompatImports:
 # ---------------------------------------------------------------------------
 
 @pytest.mark.parametrize("module", [
-    "qsp.fft.axis",
-    "qsp.fft.quaternion",
-    "qsp.fft.qdft",
-    "qsp.fft.qfft",
-    "qsp.fft.spectrum",
-    "qsp.fft.validation",
-    "qsp.fft.windows",
-    "qsp.fft.analysis",
-    "qsp.fft.utils",
+    "qsp_fft.axis",
+    "qsp_fft.quaternion",
+    "qsp_fft.qdft",
+    "qsp_fft.qfft",
+    "qsp_fft.spectrum",
+    "qsp_fft.validation",
+    "qsp_fft.windows",
+    "qsp_fft.analysis",
+    "qsp_fft.utils",
 ])
 def test_submodule_importable(module):
     importlib.import_module(module)
@@ -99,45 +99,45 @@ class TestOutputShapes:
         self.u = np.array([1.0, 0.0, 0.0])
 
     def test_qfft_shape(self):
-        from qsp.fft import qfft
+        from qsp_fft import qfft
         Q = qfft(self.q, self.u)
         assert Q.shape == (self.N, 4)
 
     def test_iqfft_shape(self):
-        from qsp.fft import iqfft, qfft
+        from qsp_fft import iqfft, qfft
         Q = qfft(self.q, self.u)
         q_rec = iqfft(Q, self.u)
         assert q_rec.shape == (self.N, 4)
 
     def test_spectrum_magnitude_shape(self):
-        from qsp.fft import qfft, spectrum_magnitude
+        from qsp_fft import qfft, spectrum_magnitude
         Q = qfft(self.q, self.u)
         assert spectrum_magnitude(Q).shape == (self.N,)
 
     def test_spectrum_energy_shape(self):
-        from qsp.fft import qfft, spectrum_energy
+        from qsp_fft import qfft, spectrum_energy
         Q = qfft(self.q, self.u)
         assert spectrum_energy(Q).shape == (self.N,)
 
     def test_total_energy_scalar(self):
-        from qsp.fft import total_energy
+        from qsp_fft import total_energy
         e = total_energy(self.q)
         assert isinstance(e, float)
 
     def test_dominant_bins_top_k(self):
-        from qsp.fft import dominant_bins, qfft
+        from qsp_fft import dominant_bins, qfft
         Q = qfft(self.q, self.u)
         idx = dominant_bins(Q, k=3)
         assert idx.shape == (3,)
 
     def test_dominant_bins_threshold(self):
-        from qsp.fft import dominant_bins, qfft
+        from qsp_fft import dominant_bins, qfft
         Q = qfft(self.q, self.u)
         idx = dominant_bins(Q, threshold=0.0)
         assert idx.ndim == 1
 
     def test_canonical_axes(self):
-        from qsp.fft import canonical_axes
+        from qsp_fft import canonical_axes
         axes = canonical_axes()
         assert set(axes.keys()) == {"i", "j", "k"}
         for ax in axes.values():

@@ -1,4 +1,4 @@
-"""qsp.fft.spectrum — core spectral-transform utilities.
+"""qsp_fft.spectrum — core spectral-transform utilities.
 
 This module contains two families of helpers:
 
@@ -48,7 +48,7 @@ def magnitude_spectrum(signal: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft import magnitude_spectrum
+    >>> from qsp_fft import magnitude_spectrum
     >>> mag = magnitude_spectrum(np.array([1.0, 0.0, -1.0, 0.0]))
     >>> mag.shape
     (3,)
@@ -77,7 +77,7 @@ def power_spectrum(signal: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft import power_spectrum
+    >>> from qsp_fft import power_spectrum
     >>> pwr = power_spectrum(np.ones(8))
     >>> pwr.shape
     (5,)
@@ -103,7 +103,7 @@ def frequency_bins(n: int, sample_rate: float = 1.0) -> np.ndarray:
 
     Examples
     --------
-    >>> from qsp.fft import frequency_bins
+    >>> from qsp_fft import frequency_bins
     >>> frequency_bins(4, sample_rate=4.0)
     array([0., 1., 2.])
     """
@@ -126,8 +126,8 @@ def spectrum_magnitude(spectrum: np.ndarray) -> np.ndarray:
     ----------
     spectrum:
         Quaternion spectrum of shape ``(N, 4)`` in ``(w,x,y,z)`` order,
-        as returned by :func:`qsp.fft.qfft.qfft` or
-        :func:`qsp.fft.qdft.qdft`.
+        as returned by :func:`qsp_fft.qfft.qfft` or
+        :func:`qsp_fft.qdft.qdft`.
 
     Returns
     -------
@@ -137,12 +137,12 @@ def spectrum_magnitude(spectrum: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.spectrum import spectrum_magnitude
+    >>> from qsp_fft.spectrum import spectrum_magnitude
     >>> Q = np.zeros((4, 4)); Q[0, 0] = 2.0
     >>> spectrum_magnitude(Q)
     array([2., 0., 0., 0.])
     """
-    from qsp.fft.quaternion import as_quaternion_array, quaternion_norm
+    from .quaternion import as_quaternion_array, quaternion_norm
 
     spectrum = as_quaternion_array(spectrum)
     return quaternion_norm(spectrum)
@@ -164,7 +164,7 @@ def spectrum_energy(spectrum: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.spectrum import spectrum_energy
+    >>> from qsp_fft.spectrum import spectrum_energy
     >>> Q = np.zeros((4, 4)); Q[1, 1] = 3.0
     >>> spectrum_energy(Q)
     array([0., 9., 0., 0.])
@@ -188,12 +188,12 @@ def total_energy(signal: np.ndarray) -> float:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.spectrum import total_energy
+    >>> from qsp_fft.spectrum import total_energy
     >>> q = np.array([[1., 0., 0., 0.], [0., 1., 0., 0.]])
     >>> total_energy(q)
     2.0
     """
-    from qsp.fft.quaternion import as_quaternion_array, quaternion_norm
+    from .quaternion import as_quaternion_array, quaternion_norm
 
     signal = as_quaternion_array(signal)
     return float(np.sum(quaternion_norm(signal) ** 2))
@@ -233,14 +233,14 @@ def dominant_bins(
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.spectrum import dominant_bins
+    >>> from qsp_fft.spectrum import dominant_bins
     >>> Q = np.zeros((8, 4)); Q[3, 0] = 5.0; Q[7, 0] = 2.0
     >>> dominant_bins(Q, k=1)
     array([3])
     >>> dominant_bins(Q, threshold=1.0)
     array([3, 7])
     """
-    from qsp.fft.quaternion import as_quaternion_array
+    from .quaternion import as_quaternion_array
 
     spectrum = as_quaternion_array(spectrum)
     energies = np.sum(spectrum ** 2, axis=1)

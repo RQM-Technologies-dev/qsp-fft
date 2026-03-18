@@ -1,7 +1,7 @@
-"""qsp.fft.qfft — fast FFT-based implementation of the QDFT.
+"""qsp_fft.qfft — fast FFT-based implementation of the QDFT.
 
 Implements the same right-sided fixed-axis Quaternionic DFT as
-:mod:`qsp.fft.qdft`, but reduces the computation to two ordinary complex
+:mod:`qsp_fft.qdft`, but reduces the computation to two ordinary complex
 FFTs via the *slice decomposition* of the quaternion algebra.
 
 Slice decomposition
@@ -48,8 +48,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from qsp.fft.axis import normalize_axis
-from qsp.fft.quaternion import as_quaternion_array
+from .axis import normalize_axis
+from .quaternion import as_quaternion_array
 
 __all__ = ["qfft", "iqfft"]
 
@@ -70,7 +70,7 @@ def _perp_axis(u: np.ndarray) -> np.ndarray:
 def qfft(signal: np.ndarray, axis: np.ndarray) -> np.ndarray:
     """Compute the right-sided fixed-axis QDFT via two complex FFTs.
 
-    Numerically identical to :func:`qsp.fft.qdft.qdft` but runs in
+    Numerically identical to :func:`qsp_fft.qdft.qdft` but runs in
     *O(N log N)* by reducing the quaternionic transform to two ordinary
     complex FFTs through the slice decomposition described in the module
     docstring.
@@ -92,8 +92,8 @@ def qfft(signal: np.ndarray, axis: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.qfft import qfft
-    >>> from qsp.fft.axis import canonical_axes
+    >>> from qsp_fft.qfft import qfft
+    >>> from qsp_fft.axis import canonical_axes
     >>> axes = canonical_axes()
     >>> q = np.zeros((8, 4)); q[0, 0] = 1.0
     >>> Q = qfft(q, axes["i"])
@@ -171,7 +171,7 @@ def iqfft(spectrum: np.ndarray, axis: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.qfft import qfft, iqfft
+    >>> from qsp_fft.qfft import qfft, iqfft
     >>> rng = np.random.default_rng(42)
     >>> q = rng.standard_normal((16, 4))
     >>> axis = np.array([0., 1., 0.])

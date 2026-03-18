@@ -1,4 +1,4 @@
-"""qsp.fft.validation — correctness and consistency helpers for QDFT/QFFT.
+"""qsp_fft.validation — correctness and consistency helpers for QDFT/QFFT.
 
 These utilities allow callers to verify that a QDFT/QFFT computation is
 self-consistent (inversion, Parseval energy balance, and agreement between
@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from qsp.fft.quaternion import as_quaternion_array
+from .quaternion import as_quaternion_array
 
 __all__ = ["reconstruction_error", "check_parseval", "compare_qdft_qfft"]
 
@@ -45,7 +45,7 @@ def reconstruction_error(
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.validation import reconstruction_error
+    >>> from qsp_fft.validation import reconstruction_error
     >>> q = np.eye(4, 4)
     >>> reconstruction_error(q, q)
     0.0
@@ -90,8 +90,8 @@ def check_parseval(
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.qfft import qfft
-    >>> from qsp.fft.validation import check_parseval
+    >>> from qsp_fft.qfft import qfft
+    >>> from qsp_fft.validation import check_parseval
     >>> rng = np.random.default_rng(0)
     >>> q = rng.standard_normal((16, 4))
     >>> Q = qfft(q, np.array([1., 0., 0.]))
@@ -133,14 +133,14 @@ def compare_qdft_qfft(
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.validation import compare_qdft_qfft
+    >>> from qsp_fft.validation import compare_qdft_qfft
     >>> rng = np.random.default_rng(7)
     >>> q = rng.standard_normal((8, 4))
     >>> compare_qdft_qfft(q, np.array([1., 0., 0.]))
     True
     """
-    from qsp.fft.qdft import qdft
-    from qsp.fft.qfft import qfft
+    from .qdft import qdft
+    from .qfft import qfft
 
     Q_direct = qdft(signal, axis)
     Q_fast = qfft(signal, axis)

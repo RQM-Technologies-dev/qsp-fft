@@ -1,4 +1,4 @@
-"""qsp.fft.axis — axis utilities for quaternionic spectral analysis.
+"""qsp_fft.axis — axis utilities for quaternionic spectral analysis.
 
 Provides helpers for validating, normalising, and constructing the fixed
 analysis axis used by the QDFT/QFFT transforms.
@@ -33,7 +33,7 @@ def normalize_axis(axis: np.ndarray) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.axis import normalize_axis
+    >>> from qsp_fft.axis import normalize_axis
     >>> normalize_axis(np.array([2.0, 0.0, 0.0]))
     array([1., 0., 0.])
     """
@@ -66,7 +66,7 @@ def is_unit_axis(axis: np.ndarray, atol: float = 1e-8) -> bool:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft.axis import is_unit_axis
+    >>> from qsp_fft.axis import is_unit_axis
     >>> is_unit_axis(np.array([1.0, 0.0, 0.0]))
     True
     >>> is_unit_axis(np.array([1.0, 1.0, 0.0]))
@@ -90,7 +90,7 @@ def canonical_axes() -> dict[str, np.ndarray]:
 
     Examples
     --------
-    >>> from qsp.fft.axis import canonical_axes
+    >>> from qsp_fft.axis import canonical_axes
     >>> axes = canonical_axes()
     >>> axes["i"]
     array([1., 0., 0.])

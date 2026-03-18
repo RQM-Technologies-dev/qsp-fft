@@ -89,7 +89,7 @@ q[n] = (1/N) Σ_{k=0}^{N-1}  Q_u[k] · exp(+u · 2πkn/N),   n = 0, …, N-1
 
 ```python
 import numpy as np
-from qsp.fft import canonical_axes, qfft, iqfft, spectrum_magnitude, reconstruction_error
+from qsp_fft import canonical_axes, qfft, iqfft, spectrum_magnitude, reconstruction_error
 
 # Create a small quaternionic signal: shape (N, 4) in (w, x, y, z) order
 rng = np.random.default_rng(0)
@@ -132,26 +132,26 @@ print("Reconstruction error:", reconstruction_error(q, q_rec))
 
 ```python
 # Axis utilities
-from qsp.fft import normalize_axis, is_unit_axis, canonical_axes
+from qsp_fft import normalize_axis, is_unit_axis, canonical_axes
 
 # Transforms
-from qsp.fft import qdft, iqdft    # direct O(N²) reference
-from qsp.fft import qfft, iqfft    # fast O(N log N)
+from qsp_fft import qdft, iqdft    # direct O(N²) reference
+from qsp_fft import qfft, iqfft    # fast O(N log N)
 
 # Spectrum helpers
-from qsp.fft import spectrum_magnitude, spectrum_energy, total_energy, dominant_bins
+from qsp_fft import spectrum_magnitude, spectrum_energy, total_energy, dominant_bins
 
 # Validation
-from qsp.fft import reconstruction_error, check_parseval, compare_qdft_qfft
+from qsp_fft import reconstruction_error, check_parseval, compare_qdft_qfft
 ```
 
 ### Classical helpers (backward-compatible)
 
 ```python
-from qsp.fft import magnitude_spectrum, power_spectrum, frequency_bins
-from qsp.fft import rectangular_window, hann_window, hamming_window
-from qsp.fft import dominant_frequency_index, dominant_frequency_value, spectral_energy
-from qsp.fft import next_power_of_two, normalise_signal
+from qsp_fft import magnitude_spectrum, power_spectrum, frequency_bins
+from qsp_fft import rectangular_window, hann_window, hamming_window
+from qsp_fft import dominant_frequency_index, dominant_frequency_value, spectral_energy
+from qsp_fft import next_power_of_two, normalise_signal
 ```
 
 ---
@@ -163,8 +163,8 @@ qsp-fft
 ├── AGENTS.md
 ├── README.md
 ├── pyproject.toml
-├── qsp/
-│   └── fft/
+├── src/
+│   └── qsp_fft/
 │       ├── __init__.py     ← public API exports
 │       ├── py.typed        ← PEP 561 marker
 │       ├── axis.py         ← normalize_axis, is_unit_axis, canonical_axes

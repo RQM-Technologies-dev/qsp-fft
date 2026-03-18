@@ -11,7 +11,7 @@ Usage::
 
 import numpy as np
 
-from qsp.fft import (
+from qsp_fft import (
     canonical_axes,
     iqfft,
     qfft,

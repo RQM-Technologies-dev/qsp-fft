@@ -3,9 +3,9 @@
 import numpy as np
 import pytest
 
-from qsp.fft.qfft import qfft
-from qsp.fft.qdft import qdft
-from qsp.fft.validation import check_parseval, compare_qdft_qfft, reconstruction_error
+from qsp_fft.qfft import qfft
+from qsp_fft.qdft import qdft
+from qsp_fft.validation import check_parseval, compare_qdft_qfft, reconstruction_error
 
 
 class TestCheckParseval:
@@ -70,7 +70,7 @@ class TestReconstructionError:
         assert pytest.approx(reconstruction_error(q, r), abs=1e-12) == 1.0
 
     def test_round_trip_error_small(self):
-        from qsp.fft.qfft import iqfft, qfft
+        from qsp_fft.qfft import iqfft, qfft
         rng = np.random.default_rng(55)
         q = rng.standard_normal((16, 4))
         u = np.array([1.0, 0.0, 0.0])

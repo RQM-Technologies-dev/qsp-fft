@@ -1,11 +1,11 @@
-"""Tests for qsp.fft.quaternion — quaternion helper functions."""
+"""Tests for qsp_fft.quaternion — quaternion helper functions."""
 
 import math
 
 import numpy as np
 import pytest
 
-from qsp.fft.quaternion import (
+from qsp_fft.quaternion import (
     as_quaternion_array,
     quaternion_conjugate,
     quaternion_exp_pure,

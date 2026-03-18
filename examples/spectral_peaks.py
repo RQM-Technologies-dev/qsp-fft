@@ -11,7 +11,7 @@ Usage::
 
 import numpy as np
 
-from qsp.fft import canonical_axes, dominant_bins, qfft, spectrum_magnitude
+from qsp_fft import canonical_axes, dominant_bins, qfft, spectrum_magnitude
 
 
 def main() -> None:

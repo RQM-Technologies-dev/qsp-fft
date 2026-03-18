@@ -1,10 +1,10 @@
-"""Tests for qsp.fft.qfft — fast FFT-based QDFT implementation."""
+"""Tests for qsp_fft.qfft — fast FFT-based QDFT implementation."""
 
 import numpy as np
 import pytest
 
-from qsp.fft.qdft import qdft
-from qsp.fft.qfft import iqfft, qfft
+from qsp_fft.qdft import qdft
+from qsp_fft.qfft import iqfft, qfft
 
 
 class TestQfftOutputShape:

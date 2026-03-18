@@ -54,12 +54,10 @@ dev = [
 ]
 
 [tool.setuptools.packages.find]
-where = ["."]
-namespaces = true
-include = ["qsp*"]
+where = ["src"]
 
 [tool.setuptools.package-data]
-"qsp.fft" = ["py.typed"]
+"qsp_fft" = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -1,9 +1,9 @@
-"""Tests for qsp.fft.axis — axis utilities."""
+"""Tests for qsp_fft.axis — axis utilities."""
 
 import numpy as np
 import pytest
 
-from qsp.fft.axis import canonical_axes, is_unit_axis, normalize_axis
+from qsp_fft.axis import canonical_axes, is_unit_axis, normalize_axis
 
 
 class TestNormalizeAxis:

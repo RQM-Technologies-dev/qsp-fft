@@ -3,8 +3,8 @@
 import numpy as np
 import pytest
 
-from qsp.fft.qdft import iqdft, qdft
-from qsp.fft.qfft import iqfft, qfft
+from qsp_fft.qdft import iqdft, qdft
+from qsp_fft.qfft import iqfft, qfft
 
 
 AXES = [
