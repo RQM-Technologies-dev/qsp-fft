@@ -1,11 +1,11 @@
-"""qsp.fft.analysis — spectral analysis helpers.
+"""qsp_fft.analysis — spectral analysis helpers.
 
-Operates on magnitude or power spectra produced by :mod:`qsp.fft.spectrum`.
+Operates on magnitude or power spectra produced by :mod:`qsp_fft.spectrum`.
 """
 
 import numpy as np
 
-from qsp.fft.spectrum import frequency_bins, magnitude_spectrum
+from .spectrum import frequency_bins, magnitude_spectrum
 
 __all__ = [
     "dominant_frequency_index",
@@ -31,7 +31,7 @@ def dominant_frequency_index(signal: np.ndarray) -> int:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft import dominant_frequency_index
+    >>> from qsp_fft import dominant_frequency_index
     >>> t = np.arange(64) / 64.0
     >>> signal = np.sin(2 * np.pi * 4 * t)   # 4 cycles in 64 samples
     >>> dominant_frequency_index(signal)
@@ -62,7 +62,7 @@ def dominant_frequency_value(
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft import dominant_frequency_value
+    >>> from qsp_fft import dominant_frequency_value
     >>> t = np.arange(256) / 256.0
     >>> signal = np.sin(2 * np.pi * 10 * t)
     >>> dominant_frequency_value(signal, sample_rate=256.0)
@@ -93,7 +93,7 @@ def spectral_energy(signal: np.ndarray) -> float:
     Examples
     --------
     >>> import numpy as np
-    >>> from qsp.fft import spectral_energy
+    >>> from qsp_fft import spectral_energy
     >>> spectral_energy(np.zeros(8))
     0.0
     """

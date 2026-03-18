@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "qsp-fft"
-version = "0.1.2"
-description = "Spectral-transform library built on qsp-core for the RQM Technologies ecosystem"
+version = "1.0.0"
+description = "Quaternionic FFT (QDFT/QFFT) spectral engine for the RQM Technologies QSP ecosystem"
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.9"
@@ -14,10 +14,12 @@ authors = [
 ]
 keywords = [
     "fft",
+    "quaternion",
+    "qdft",
+    "qfft",
     "spectrum",
     "signal-processing",
     "windowing",
-    "quaternion",
     "qsp",
     "spectral-analysis",
 ]
@@ -52,9 +54,10 @@ dev = [
 ]
 
 [tool.setuptools.packages.find]
-where = ["."]
-namespaces = true
-include = ["qsp*"]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"qsp_fft" = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

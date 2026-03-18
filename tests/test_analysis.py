@@ -1,9 +1,9 @@
-"""Tests for qsp.fft.analysis."""
+"""Tests for qsp_fft.analysis."""
 
 import numpy as np
 import pytest
 
-from qsp.fft.analysis import (
+from qsp_fft.analysis import (
     dominant_frequency_index,
     dominant_frequency_value,
     spectral_energy,
